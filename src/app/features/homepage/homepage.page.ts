@@ -1,6 +1,6 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { ItemSelectorComponent, ItemNode } from '../../core/shared/components/item-selector/item-selector.component'; // import { ItemSelectorComponent, ItemNode } from '@rentman/rentman-ui-components';
+import { ItemSelectorComponent, ItemNode } from '../../shared/components/item-selector/item-selector.component'; // import { ItemSelectorComponent, ItemNode } from '@rentman/rentman-ui-components';
 import { ResponseService, ResponseData, FolderRow, ItemRow } from '../../core/http/response.service';
 import { firstValueFrom } from 'rxjs';
 
