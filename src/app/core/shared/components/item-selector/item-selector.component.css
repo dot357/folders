@@ -1,0 +1,60 @@
+:host,
+.item-sel { width: 275px; }
+
+.item-sel {
+
+  border: 1px solid var(--color-border);
+  --indent-step: var(--space-4);
+  --row-gap: var(--space-2);
+}
+
+.tree { list-style: none; margin: 0; padding: 0; }
+.tree .tree { margin: 0; }
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: var(--row-gap);
+  min-height: 32px;
+  padding-left: calc(var(--space-2) + (var(--level, 0) * var(--indent-step)));
+  border-radius: var(--radius-base);
+}
+.row:hover { background: var(--color-surface-hover); }
+
+.row-left {
+  display: flex;
+  align-items: center;
+  gap: var(--row-gap);
+  flex: 1 1 auto;
+  min-width: 0;            /* ← allows the label to shrink */
+}
+
+.row-right { flex: 0 0 auto; }
+
+
+input[type="checkbox"] { width: 16px; height: 16px; }
+
+.label {
+  flex: 1 1 auto;
+  min-width: 0;            /* ← required for ellipsis in flex */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-top: var(--row-gap);
+}
+
+.chev {
+  width: 24px; height: 24px;
+  display: inline-flex; align-items: center; justify-content: center;
+  background: transparent; border: 0; padding: 0; cursor: pointer;
+  color: var(--color-text-on-surface);
+}
+
+.has-children > .row .label { font-weight: 600; }
+
+
+/* screen reader only */
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0, 0, 0, 0); white-space: nowrap; border: 0;
+}

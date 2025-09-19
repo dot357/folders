@@ -1,0 +1,71 @@
+<div
+  class="card item-sel"
+  role="region"
+  aria-label="Item selector"
+
+>
+  <ng-container
+    *ngTemplateOutlet="nodeList; context: { $implicit: nodes, level: 0 }"
+  ></ng-container>
+</div>
+
+<ng-template #nodeList let-list let-level="level">
+  <ul
+    class="tree"
+    [attr.role]="level === 0 ? 'tree' : 'group'"
+    [attr.aria-multiselectable]="level === 0 ? 'true' : null"
+    [style.--level]="level"
+  >
+    <li
+      *ngFor="let n of list"
+      class="tree-row"
+      role="treeitem"
+      [attr.aria-level]="level + 1"
+      [attr.aria-expanded]="n.children?.length ? (!isCollapsed(n.id) ? 'true' : 'false') : null"
+    >
+      <div class="row">
+        <div class="row-left">
+          <input
+            [id]="'chk-' + n.id"
+            type="checkbox"
+            [checked]="isChecked(n.id)"
+            [indeterminate]="isIndeterminate(n)"
+            [attr.aria-describedby]="'lbl-' + n.id"
+            (change)="toggleCheck(n)"
+          />
+          <label
+            class="label"
+            [id]="'lbl-' + n.id"
+            [for]="'chk-' + n.id"
+            [title]="n.label"
+          >
+            {{ n.label }}
+          </label>
+        </div>
+
+        <div class="row-right" *ngIf="n.children?.length">
+          <button
+            class="chev"
+            type="button"
+            (click)="toggle(n.id)"
+            (keydown)="onDisclosureKeydown($event, n)"
+            [attr.aria-expanded]="!isCollapsed(n.id)"
+            [attr.aria-controls]="'group-' + n.id"
+            [attr.aria-label]="(isCollapsed(n.id) ? 'Expand ' : 'Collapse ') + n.label"
+          >
+            <span
+              [style.transform]="isCollapsed(n.id) ? 'rotate(-90deg)' : 'rotate(0deg)'"
+              aria-hidden="true"
+            >▾</span>
+          </button>
+        </div>
+      </div>
+
+      <ng-container *ngIf="n.children?.length && !isCollapsed(n.id)">
+        <ng-container
+          *ngTemplateOutlet="nodeList; context: { $implicit: n.children, level: level + 1 }"
+        ></ng-container>
+      </ng-container>
+    </li>
+  </ul>
+</ng-template>

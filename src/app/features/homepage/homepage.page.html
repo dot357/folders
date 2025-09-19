@@ -1,0 +1,92 @@
+<div class="">
+  <div style="width: 350px;display: flex; flex-direction: row; align-items: center; justify-content: center;"
+  
+  class="pt-6 pb-6 bg-surface"
+  >
+      <ng-container *ngIf="!isLoading(); else loading">
+    <div style="display: flex; flex-direction: column; align-items: flex-end;">
+      <app-item-selector
+        [nodes]="tree()"
+        [selectedIds]="selected()"
+        (selectionChange)="onSelectionChange($event)"
+        style="width:275px"
+      ></app-item-selector>
+      <div style="flex: 1; width: 100%; display: flex; flex-direction: column; align-items: flex-end;">
+        <p style="margin-right: auto;">
+          <span class="inter-600">
+            Selected item IDs:
+          </span>
+          
+          <span>
+             {{ selected().join(', ') || 'N/A' }}
+          </span>
+        </p>
+        <button class="btn btn-primary" (click)="clear()">Clear selection</button>
+      </div>
+    </div>
+    </ng-container>
+      <ng-template #loading>
+    <!-- put your skeleton here -->
+    <div class="p-6">
+      <div class="card" style="width: 275px; height: 600px;">
+       <div>
+         <div 
+          class="skeleton skeleton-line" 
+          style="
+            --lines: 1;
+            --c-w: 100%;
+          "
+        ></div>
+        <div class="pl-4">
+           <div 
+          class="skeleton skeleton-line" 
+          style="
+            --lines: 1;
+            --c-w: 100%;
+          "
+        ></div>
+        </div>
+       </div>
+        <div>
+         <div 
+          class="skeleton skeleton-line" 
+          style="
+            --lines: 1;
+            --c-w: 100%;
+          "
+        ></div>
+        <div class="pl-4">
+           <div 
+          class="skeleton skeleton-line" 
+          style="
+            --lines: 4;
+            --c-w: 100%;
+          "
+        ></div>
+        </div>
+       </div>
+        <div>
+         <div 
+          class="skeleton skeleton-line" 
+          style="
+            --lines: 1;
+            --c-w: 100%;
+          "
+        ></div>
+        <div class="pl-4">
+           <div 
+          class="skeleton skeleton-line" 
+          style="
+            --lines: 3;
+            --c-w: 100%;
+          "
+        ></div>
+        </div>
+       </div>
+      </div>
+    </div>
+  </ng-template>
+  </div>
+</div>
+
+

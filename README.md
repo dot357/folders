@@ -1,59 +1,60 @@
 # Folders
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.3.2.
+Project start time : 19 Sep 2025 - 14:37
 
-## Development server
 
-To start a local development server, run:
 
-```bash
-ng serve
-```
+## TODO:
+- [ ] Add npmrc
+- [ ] Add instructions for running the app
+- [ ] Add instructions for running tests
+- [+] Add docs for skeleton loader
+- [+] Add accessibility features
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
 
-## Code scaffolding
+## Project detgails
+- Node version: v22.18.0
+- Angular version: 20.3.0
+- TypeScript version: 5.9.2
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
-
-```bash
-ng generate component component-name
-```
-
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+For convenience, an [`.nvmrc`](.nvmrc) file is included.  
+If you use [nvm](https://github.com/nvm-sh/nvm):
 
 ```bash
-ng generate --help
+nvm use
 ```
 
-## Building
 
-To build the project run:
+
+### Run the development server
+
+Install dependencies:
 
 ```bash
-ng build
+npm install
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+Start the dev server with hot reloading:
 
 ```bash
-ng test
+npm run start
 ```
 
-## Running end-to-end tests
 
-For end-to-end (e2e) testing, run:
+Run the unit tests:
 
 ```bash
-ng e2e
+npm run test
 ```
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 
-## Additional Resources
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+
+
+
+## Skeleton loaders
+For ease of use I have included a skeleton loader in the `index.html` file. This loader is a simple loader that can be used to show a loading animation while the app is loading.
+
+`<link rel="stylesheet" href="https://unpkg.com/css-skeletons@1.0.7/dist/css-skeletons.min.css" />`
+
+https://dgknca.github.io/css-skeletons/
